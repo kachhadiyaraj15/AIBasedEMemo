@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Post Feedback</title>
+    <link rel="stylesheet" href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/star.css">
+    <link rel="shortcut icon" href="../../static/adminResources/images/favicon.png"/>
+</head>
+<body class="sidebar-light">
+<div class="container-scroller">
+    {% include 'traffic_police_station/header.html' %}
+    <div class="container-fluid page-body-wrapper">
+        {% include 'traffic_police_station/menu.html' %}
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>Add Feedback</b></h4>
+                                <form class="cmxform" method="post" action="/traffic_police_station/insert_feedback">
+                                    <fieldset>
+
+                                        <div class="rate mb-3">
+                                            <input type="radio" id="star5" name="rating" value="5"/><label for="star5"
+                                                                                                           title="text">5
+                                            stars</label>
+                                            <input type="radio" id="star4" name="rating" value="4"/><label for="star4"
+                                                                                                           title="text">4
+                                            stars</label>
+                                            <input type="radio" id="star3" name="rating" value="3"/><label for="star3"
+                                                                                                           title="text">3
+                                            stars</label>
+                                            <input type="radio" id="star2" name="rating" value="2"/><label for="star2"
+                                                                                                           title="text">2
+                                            stars</label>
+                                            <input type="radio" id="star1" name="rating" value="1"/><label for="star1"
+                                                                                                           title="text">1
+                                            star</label>
+                                        </div>
+
+                                        <div class="form-group" style="clear: left">
+                                            <textarea class="form-control"
+                                                      placeholder="Enter Your Feedback..."
+                                                      name="feedbackDescription"></textarea>
+                                        </div>
+                                        <input class="btn btn-primary" type="submit" value="Submit">
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><b>View Feedback</b></h4>
+                        {% if feedback_vo_list %}
+                            <div class="row">
+                                {% for row in feedback_vo_list %}
+
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <div class="d-flex align-items-start profile-feed-item">
+                                                <img src="../../static/adminResources/images/face1.jpg" alt="profile"
+                                                     class="img-sm rounded-circle">
+                                                <div class="ml-4">
+                                                    <h6>
+
+
+                                                        <div>
+                                                            {{ row[0]['login_username'] }}
+
+                                                            <small class="ml-4 text-muted"><i
+                                                                    class="mdi mdi-clock mr-1"></i>
+                                                                {{ row[1]['feedback_datetime'] }}
+                                                            </small>
+
+                                                        </div>
+                                                        <br>
+                                                        <div>
+                                                            {% for rating_star in range(row[1]['feedback_rating']) %}
+                                                                <small class="text-muted"><i></i>
+                                                                    <i class="mdi mdi-star"></i>
+                                                                </small>
+                                                            {% endfor %}
+                                                        </div>
+
+                                                    </h6>
+
+                                                    <p>
+                                                        {{ row[1]['feedback_description'] }}
+                                                    </p>
+                                                    <p class="small text-muted mt-2 mb-0">
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        {% else %}
+                            <div class="row" style="margin-left:450px;">
+                                <h5>No Feedback Available !</h5>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+            {% include 'traffic_police_station/footer.html' %}
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<script src="../../static/adminResources/js/form-validation.js"></script>
+<script src="../../static/adminResources/js/bt-maxLength.js"></script>
+</body>
+</html>

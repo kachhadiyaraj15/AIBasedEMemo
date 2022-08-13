@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View User</title>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BoardsterUI Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../static/adminResources/images/favicon.png"/>
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+
+    {% include 'admin/header.html' %}
+
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+
+        <!-- partial:partials/_sidebar.html -->
+
+
+        {% include 'admin/menu.html' %}
+
+
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><b>View User</b></h4>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table id="order-listing" class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Traffic Police Station Name</th>
+                                            <th>Traffic Police Station Area</th>
+                                            <th>Traffic Police Head Name</th>
+                                            <th>Traffic Police Head Contact</th>
+                                            <th>Traffic Police Head Username</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        {% for row in traffic_police_station_vo_list %}
+
+                                            <tr>
+                                                <td>{{ row[2]['traffic_police_station_name'] }}</td>
+                                                <td>{{ row[0]['area_name'] }}</td>
+                                                <td>{{ row[2]['traffic_police_head_name'] }}</td>
+                                                <td>{{ row[2]['traffic_police_head_contact'] }}</td>
+                                                <td>{{ row[1]['login_username'] }}</td>
+                                                <td>{{ row[1]['login_status'] }}</td>
+                                                <td>
+                                                    {% if row[1]['login_status'] == 'active' %}
+                                                    <a class="btn btn-block font-weight-medium btn-primary btn-rounded btn-fw"
+                                                       href="/admin/block_user?loginId={{ row[1]['login_id'] }}">Block</a>
+                                                    {% else %}
+                                                    <a class="btn btn-block font-weight-medium btn-danger btn-rounded btn-fw"
+                                                       href="/admin/unblock_user?loginId={{ row[1]['login_id'] }}">Unblcok</a>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+
+            {% include 'admin/footer.html' %}
+
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<script src="../../static/adminResources/js/vendor.bundle.addons.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="../../static/adminResources/js/data-table.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>
+
+
+</body>
+</html>

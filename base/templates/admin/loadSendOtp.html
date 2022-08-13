@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Validate OTP</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../static/adminResources/images/favicon.png"/>
+
+</head>
+
+<body>
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth">
+            <div class="row w-100">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left p-5">
+                        <div class="brand-logo">
+                            <img src="../../static/adminResources/images/logo.svg" alt="logo">
+                        </div>
+                        <h6 class="font-weight-light" align="left"><b>Validate OTP</b></h6><br>
+                        <form class="pt-3" action="/admin/validate_otp" method="post">
+                            <div class="form-group">
+                                <input type="text" size="4" maxlength="4" class="form-control form-control-lg"
+                                       placeholder="Enter 4-Digit OTP"
+                                       name="otp">
+                            </div>
+                            <br>
+                            <div class="mt-3">
+                                <input type="submit"
+                                       class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
+                                       value="Submit">
+                            </div>
+                            <br>
+
+                        </form>
+                        <div class="mt-3">
+                            <a href="/admin/resend_otp"
+                               class="btn btn-block btn-outline-primary btn-fw font-weight-medium">
+                                Resend OTP
+                            </a>
+                        </div>
+                        <br>
+                        {% with message = get_flashed_messages() %}
+
+                            {% if message %}
+
+                                <div style="color: red; font-size: 15px;">
+                                    {{ message[0] }}</div>
+
+                            {% endif %}
+
+                        {% endwith %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<script src="../../static/adminResources/js/vendor.bundle.addons.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+{#<script type="text/javascript">#}
+{#    var time = 5;#}
+{#    var x = setInterval(function () {#}
+{#        document.getElementById("otp").innerHTML = " " + time + " s";#}
+{##}
+{#        time = time - 1;#}
+{#        if (time < 0) {#}
+{#            clearInterval(x);#}
+{#        }#}
+{#    }, 1000)#}
+{#</script>#}
+</body>
+
+</html>

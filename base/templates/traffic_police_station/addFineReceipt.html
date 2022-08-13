@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Fine Reciept</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BoardsterUI Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../static/adminResources/images/favicon.png"/>
+
+    <script type="text/javascript">
+        a = 0;
+        b = 0;
+        c = 0;
+        d = 0;
+        e = 0;
+
+        function finetotal() {
+            var NoHelmet = document.getElementById("NoHelmet");
+            var NoLicence = document.getElementById("NoLicence");
+            var NoRCBook = document.getElementById("NoRCBook");
+            var NoPUC = document.getElementById("NoPUC");
+            var NoInsurance = document.getElementById("NoInsurance");
+
+            if (NoHelmet.checked) {
+                a = 100;
+            } else {
+                a = 0;
+            }
+            if (NoLicence.checked) {
+                b = 100;
+            } else {
+                b = 0;
+            }
+            if (NoRCBook.checked) {
+                c = 100;
+            } else {
+                c = 0;
+            }
+            if (NoPUC.checked) {
+                d = 100;
+            } else {
+                d = 0;
+            }
+            if (NoInsurance.checked) {
+                e = 100;
+            } else {
+                e = 0;
+            }
+
+            var fine = parseInt(a) + parseInt(b) + parseInt(c) + parseInt(d) + parseInt(e);
+
+            var FineAmount = document.getElementById("FineAmount");
+            FineAmount.value = fine;
+        }
+    </script>
+
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+
+    {% include 'traffic_police_station/header.html' %}
+
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+
+        <!-- partial:partials/_sidebar.html -->
+
+
+        {% include 'traffic_police_station/menu.html' %}
+
+
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>Add Fine Reciept</b></h4>
+                                <form class="cmxform" method="post" name="listForm"
+                                      action="/traffic_police_station/insert_finereceipt">
+                                    <fieldset>
+
+                                        <input type="hidden" name="citizenId"
+                                               value="{{ citizen_vo_list[0]['citizen_id'] }}">
+                                        <div class="form-group">
+                                            <label for="Citizen Username">Citizen Username</label>
+                                            <input id='Citizen Username'
+                                                   value="{{ citizen_vo_list[0]['citizen_name'] }}" class="form-control"
+                                                   name="citizenUsername"
+                                                   type="text" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Citizen Contact">Citizen Contact</label>
+                                            <input id="Citizen Contact"
+                                                   value="{{ citizen_vo_list[0]['citizen_contact'] }}"
+                                                   class="form-control" name="citizenContact"
+                                                   type="text" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Citizen Email">Citizen Email</label>
+                                            <input id="Citizen Email" value="{{ citizen_vo_list[0]['citizen_email'] }}"
+                                                   class="form-control" name="citizenEmail"
+                                                   type="text" readonly>
+                                        </div>
+
+
+                                        <h4 class="card-title">Fine Reason</h4>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" name="choice" class="form-check-input"
+                                                       value="No Helmet" id="NoHelmet" onclick="finetotal()">
+                                                No Helmet
+                                                <i class="input-helper"></i></label>
+                                        </div>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" name="choice" class="form-check-input"
+                                                       value="No Licence" id="NoLicence" onclick="finetotal()">
+                                                No Licence
+                                                <i class="input-helper"></i></label>
+                                        </div>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" name="choice" class="form-check-input"
+                                                       value="No RC Book" id="NoRCBook" onclick="finetotal()">
+                                                No RC Book
+                                                <i class="input-helper"></i></label>
+                                        </div>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" name="choice" class="form-check-input"
+                                                       value="No PUC" id="NoPUC" onclick="finetotal()">
+                                                No PUC
+                                                <i class="input-helper"></i></label>
+                                        </div>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" name="choice" class="form-check-input"
+                                                       value="No Insurance" id="NoInsurance" onclick="finetotal()">
+                                                No Insurance
+                                                <i class="input-helper"></i></label>
+                                        </div>
+                                        <div>&nbsp;&nbsp;</div>
+                                        <div class="form-group">
+                                            <label for="Fine Amount">Fine Amount</label>
+                                            <input id="FineAmount" class="form-control" name="citizenFineAmount"
+                                                   type="text" value="0" readonly>
+                                        </div>
+                                        <input class="btn btn-primary" type="submit" value="Submit">
+
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+
+            {% include 'traffic_police_station/footer.html' %}
+
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<script src="../../static/adminResources/js/vendor.bundle.addons.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="../../static/adminResources/js/form-validation.js"></script>
+<script src="../../static/adminResources/js/bt-maxLength.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>

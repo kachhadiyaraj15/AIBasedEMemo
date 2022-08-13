@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Complain</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BoardsterUI Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../static/adminResources/images/favicon.png"/>
+
+
+
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+
+    {% include 'traffic_police_station/header.html' %}
+
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+
+        <!-- partial:partials/_sidebar.html -->
+
+
+        {% include 'traffic_police_station/menu.html' %}
+
+
+        <!-- partial -->
+
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>Add Complain</b></h4>
+                                <form class="cmxform" method="post" action="/traffic_police_station/insert_complain">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="Subject">Complain Subject</label>
+                                            <input id="Subject" class="form-control" name="complainSubject" type="text"
+                                                   required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Description">Complain Description</label>
+                                            <textarea id="Description" class="form-control" name="complainDescription"
+                                                      rows="5"
+                                                      required></textarea>
+                                        </div>
+                                        <input class="btn btn-primary" type="submit" value="Submit">
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><b>View Complain</b></h4>
+                        {% if complain_vo_updated_list %}
+                            <div class="row">
+                                {% for row in complain_vo_updated_list %}
+                                    <div class="col-lg-12">
+                                        <div class="d-flex align-items-start profile-feed-item">
+                                            <img src="../../static/adminResources/images/face1.jpg" alt="profile"
+                                                 class="img-sm rounded-circle" width="100" height="100">
+                                            <div class="ml-4">
+                                                <h6>
+                                                    {{ row[0]['login_username'] }}
+
+                                                    <small class="ml-4 text-muted"><i class="mdi mdi-clock mr-1"></i>
+                                                        {{ row[1]['complain_datetime'] }}
+                                                    </small>
+                                                </h6>
+                                                <p>
+                                                    Complain Subject :
+                                                    {{ row[1]['complain_subject'] }}
+                                                </p>
+                                                <p>
+                                                    Complain Discription :
+                                                    {{ row[1]['complain_description'] }}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        {% if row[1]['complain_reply_description'] != None %}
+                                            <div class="d-flex align-items-start profile-feed-item"
+                                                 style="margin-left: 250px;">
+                                                <img src="../../static/adminResources/images/face3.jpg" alt="profile"
+                                                     class="img-sm rounded-circle">
+                                                <div class="ml-4">
+                                                    <h6>
+                                                        {{ admin_login_username }}
+
+                                                        <small class="ml-4 text-muted"><i
+                                                                class="mdi mdi-clock mr-1"></i>
+                                                            {{ row[1]['complain_reply_datetime'] }}
+                                                        </small>
+                                                    </h6>
+                                                    <p>
+                                                        Complain Subject :
+                                                        {{ row[1]['complain_subject'] }}
+                                                    </p>
+                                                    <p>
+                                                        Complain Reply :
+                                                        {{ row[1]['complain_reply_description'] }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="row" style="margin-left:450px;">
+                                <h5>No Complain Available !</h5>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content-wrapper ends -->
+<!-- partial:../../partials/_footer.html -->
+
+<!-- partial -->
+
+<!-- main-panel ends -->
+
+{% include 'traffic_police_station/footer.html' %}
+
+<!-- page-body-wrapper ends -->
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<script src="../../static/adminResources/js/vendor.bundle.addons.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="../../static/adminResources/js/form-validation.js"></script>
+<script src="../../static/adminResources/js/bt-maxLength.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>

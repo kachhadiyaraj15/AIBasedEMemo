@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Complain</title>
+
+    <!-- Required meta tags -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../static/adminResources/images/favicon.png"/>
+
+
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+
+    {% include 'admin/header.html' %}
+
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+
+        <!-- partial:partials/_sidebar.html -->
+
+
+        {% include 'admin/menu.html' %}
+
+
+        <!-- partial -->
+
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><b>Manage Complain</b></h4>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table id="order-listing" class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>Subject</th>
+                                            <th>Description</th>
+                                            <th>Date & Time</th>
+                                            <th>Actions</th>
+                                            <th>Status</th>
+                                            <th>Compain Reply</th>
+                                            <th>Reply Date & Time</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            {% for row in complain_vo_list %}
+                                                <td>{{ row[1]['login_username'] }}</td>
+                                                <td>{{ row[0]['complain_subject'] }}</td>
+                                                <td>{{ row[0]['complain_description'] }}</td>
+                                                <td>{{ row[0]['complain_datetime'] }}</td>
+                                                <td>
+                                                    <a href="/admin/delete_complain?complainId={{ row[0]['complain_id'] }}"><i
+                                                            class="mdi mdi-trash-can" style="color:red;"></i></a>
+                                                </td>
+                                                <td>
+
+                                                    {% if row[0]['complain_reply_description'] == None %}
+
+                                                        <a class="btn btn-block font-weight-medium btn-primary btn-rounded btn-fw"
+                                                           href="/admin/load_complain_reply?complainId={{ row[0]['complain_id'] }}">Reply
+                                                        </a>
+                                                    {% else %}
+                                                        <a class="btn btn-block font-weight-medium btn-danger btn-rounded btn-fw">
+                                                            Replied
+                                                        </a>
+                                                    {% endif %}
+
+                                                </td>
+                                                <td>{{ row[0]['complain_reply_description'] }}</td>
+                                                <td>{{ row[0]['complain_reply_datetime'] }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+
+            {% include 'admin/footer.html' %}
+
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<script src="../../static/adminResources/js/vendor.bundle.addons.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="../../static/adminResources/js/data-table.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>
