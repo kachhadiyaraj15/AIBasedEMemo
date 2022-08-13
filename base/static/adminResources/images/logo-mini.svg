@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="22px" viewBox="0 0 11 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>LOGO</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-18.000000, -21.000000)" fill-rule="nonzero">
+            <g id="LOGO" transform="translate(18.000000, 21.000000)">
+                <path d="M0,0 L5.5,0 C8.53756612,-5.57991845e-16 11,2.46243388 11,5.5 L11,5.5 C11,8.53756612 8.53756612,11 5.5,11 L0,11 L0,0 Z" id="Rectangle-6" fill="#6D3277"></path>
+                <path d="M0,11 L5.5,11 C8.53756612,11 11,13.4624339 11,16.5 L11,16.5 C11,19.5375661 8.53756612,22 5.5,22 L0,22 L0,11 Z" id="Rectangle-6-Copy" fill="#FF006E"></path>
+            </g>
+        </g>
+    </g>
+</svg>
